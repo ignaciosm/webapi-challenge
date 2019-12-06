@@ -19,7 +19,7 @@ Go code!
 // })
 
 
-const server = require("./api/server.js");
+const server = require("./server.js");
 
 // reading an environment variable
 const port = process.env.PORT || 4000;
