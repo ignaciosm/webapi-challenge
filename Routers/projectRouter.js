@@ -4,11 +4,6 @@ const Projects = require('../data/helpers/projectModel');
 const router = express.Router();
 router.use(express.json());
 
-// TEST
-// router.get('/', (req, res) => {
-//   res.send(`<h2>hello from projects!</h2>`);
-// });
-
 // GET projects
 router.get('/', (req, res) => {
   Projects.get(req.all)
@@ -33,7 +28,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// CREATE projects
+// POST projects
 router.post('/', (req, res) => {
   Projects.insert(req.body)
   .then(user => {
@@ -66,6 +61,18 @@ router.delete('/:id', (req, res) => {
   .catch(error => {
     console.log(error);
     res.status(500).json({ error: "The projects information could not be retrieved." });
+  });
+});
+
+// GET projects/actions/:id
+router.get('/actions/:id', (req, res) => {
+  Projects.getProjectActions(req.params.id)
+  .then(actions => {
+    res.status(200).json(actions);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).json({ error: "The actions information could not be retrieved." });
   });
 });
 
