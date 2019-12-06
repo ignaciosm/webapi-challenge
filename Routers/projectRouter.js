@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   })
   .catch(error => {
     console.log(error);
-    res.status(500).json({ error: "The posts information could not be retrieved." });
+    res.status(500).json({ error: "The projects information could not be retrieved." });
   });
 });
 
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
   })
   .catch(error => {
     console.log(error);
-    res.status(500).json({ error: "The posts information could not be retrieved." });
+    res.status(500).json({ error: "The projects information could not be retrieved." });
   });
 });
 
@@ -41,32 +41,32 @@ router.post('/', (req, res) => {
   })
   .catch(error => {
     console.log(error);
-    res.status(500).json({ error: "The posts information could not be retrieved." });
+    res.status(500).json({ error: "The projects information could not be retrieved." });
   });
 });
 
 // UPDATE projects
-// router.put('/:id', validateUserId, (req, res) => {
-//   Projects.update(req.params.id, req.body)
-//   .then(projects => {
-//     res.status(200).json(projects);
-//   })
-//   .catch(error => {
-//     console.log(error);
-//     res.status(500).json({ error: "The posts information could not be retrieved." });
-//   });
-// });
+router.put('/:id', (req, res) => {
+  Projects.update(req.params.id, req.body)
+  .then(projects => {
+    res.status(200).json(projects);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).json({ error: "The projects information could not be retrieved." });
+  });
+});
 
 // DELETE projects
-// router.delete('/:id', validateUserId, (req, res) => {
-//   Projects.remove(req.params.id)
-//   .then(projects => {
-//     res.status(200).json(projects);
-//   })
-//   .catch(error => {
-//     console.log(error);
-//     res.status(500).json({ error: "The posts information could not be retrieved." });
-//   });
-// });
+router.delete('/:id', (req, res) => {
+  Projects.remove(req.params.id)
+  .then(projects => {
+    res.status(200).json(projects);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).json({ error: "The projects information could not be retrieved." });
+  });
+});
 
 module.exports = router;
